@@ -1,14 +1,84 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <el-container>
+      <el-aside width="250px">
+        <div class="logo">
+          <svg width="512px" height="139px" viewBox="0 0 512 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <defs></defs>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g>
+                      <g transform="translate(150.000000, 31.000000)" fill="#08994b">
+                          <path d="M0.6,71.8 L0.6,8.8 L8.7,8.8 L47.2,59.5 L47.2,8.8 L54.9,8.8 L54.9,71.8 L46.8,71.8 L8.3,20.6 L8.3,71.8 L0.6,71.8 L0.6,71.8 Z"></path>
+                          <path d="M117.6,69.3 C112.5,71.2 107,72.2 101.2,72.2 C78.4,72.2 67,61.3 67,39.4 C67,18.7 78,8.3 100,8.3 C106.3,8.3 112.2,9.2 117.6,10.9 L117.6,17.9 C112.2,15.8 106.6,14.8 100.9,14.8 C83.7,14.8 75.1,23 75.1,39.2 C75.1,56.7 83.6,65.4 100.5,65.4 C103.2,65.4 106.2,65 109.5,64.3 L109.5,43.2 L117.6,43.2 L117.6,69.3 L117.6,69.3 Z"></path>
+                          <path d="M130.6,47.5 L130.6,8.8 L138.7,8.8 L138.7,47.5 C138.7,59.6 144.7,65.7 156.8,65.7 C168.8,65.7 174.9,59.6 174.9,47.5 L174.9,8.8 L183,8.8 L183,47.5 C183,64 174.3,72.3 156.8,72.3 C139.3,72.3 130.6,64 130.6,47.5 L130.6,47.5 L130.6,47.5 Z"></path>
+                          <path d="M205.6,8.8 L205.6,65.2 L238.6,65.2 L238.6,71.8 L197.5,71.8 L197.5,8.8 L205.6,8.8 L205.6,8.8 Z"></path>
+                          <path d="M250.3,71.8 L241.8,71.8 L273.1,0.5 L304.4,71.8 L295.4,71.8 L287.3,52 L266.5,52 L268.7,45.4 L284.6,45.4 L272.8,16.9 L250.3,71.8 L250.3,71.8 Z"></path>
+                          <path d="M313.1,71.8 L313.1,8.8 L340,8.8 C352,8.8 358,13.8 358,23.9 C358,32.1 352.1,38.2 340.4,42.1 L362,71.8 L351.3,71.8 L331.3,43.5 L331.3,38.2 C343.3,36.3 349.4,31.7 349.4,24.3 C349.4,18.5 346.1,15.6 339.4,15.6 L321.4,15.6 L321.4,71.8 L313.1,71.8 L313.1,71.8 Z"></path>
+                      </g>
+                      <g>
+                          <path d="M0,23 L64.5,0 L130.7,22.6 L120,107.9 L64.5,138.6 L9.9,108.3 L0,23 L0,23 Z" fill="#0dc361"></path>
+                          <path d="M130.7,22.6 L64.5,0 L64.5,138.6 L120,107.9 L130.7,22.6 L130.7,22.6 Z" fill="#08994b"></path>
+                          <path d="M64.6,16.2 L64.6,16.2 L24.4,105.6 L39.4,105.3 L47.5,85.1 L64.6,85.1 L83.4,85.1 L92.2,105.5 L106.5,105.8 L64.6,16.2 L64.6,16.2 Z M64.7,44.9 L78.3,73.3 L65.3,73.3 L64.6,73.3 L52.8,73.3 L64.7,44.9 L64.7,44.9 Z" fill="#FFFFFF"></path>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+        </div>
+        <el-menu
+      default-active="2"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#0dc361">
+      <router-link to="/">
+          <el-menu-item index="2">
+            <i class="el-icon-tickets"></i>
+            <span>User List</span>
+          </el-menu-item>
+          </router-link>
+          <router-link to="/about">
+          <el-menu-item index="4">
+            <i class="el-icon-circle-plus"></i>
+            <span>Add User</span>
+          </el-menu-item>
+        </router-link>
+        </el-menu>
+      </el-aside>
+      <el-container>
+        <el-header>
+          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="1">This Does Nothing</el-menu-item>
+            <el-submenu index="2">
+              <template slot="title">DropDown</template>
+              <el-menu-item index="2-1">item one</el-menu-item>
+              <el-menu-item index="2-2">item two</el-menu-item>
+              <el-menu-item index="2-3">item three</el-menu-item>
+              <el-submenu index="2-4">
+                <template slot="title">item four</template>
+                <el-menu-item index="2-4-1">item one</el-menu-item>
+                <el-menu-item index="2-4-2">item two</el-menu-item>
+                <el-menu-item index="2-4-3">item three</el-menu-item>
+              </el-submenu>
+            </el-submenu>
+            <el-menu-item index="3" disabled>Disabled</el-menu-item>
+          </el-menu>
+          <div class="line"></div>
+        </el-header>
+        <el-main>
+          <router-view/>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <style lang="scss">
+body{
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,14 +86,24 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.el-aside {
+  background: #545b63;
+  color: white;
+  height: 100vh;
+}
+.logo {
+  background: #42474e;
+}
+.logo svg {
+  width: 200px;
+  height: 46px;
+  padding-bottom: 2px;
+  padding-top: 6px;
+}
+.el-menu {
+  border-right: 0px !important;
+}
+a {
+  text-decoration: none !important;
 }
 </style>
